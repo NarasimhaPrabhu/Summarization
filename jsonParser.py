@@ -28,7 +28,7 @@ with open(inputFile, "r", encoding="utf-8") as fin:
     if topicsList:
         with open(topicsFile, "w", encoding="utf-8") as fout:
             for topic in topicsList:
-                fout.write(topic)
+                fout.write(topic + "\n")
         
         with open(newJSONFile, "w", encoding="utf-8") as writer:
             writer.write(newJSON)    
