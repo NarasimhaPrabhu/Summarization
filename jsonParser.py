@@ -27,7 +27,7 @@ with open(inputFile, "r", encoding="utf-8") as fin:
         with open(topicsFile, "w", encoding="utf-8") as fout:
             for topic in topicsList:
                 fout.write(topic + "\n")
-        print("Writing successful - topics file: ",len(topicsFile))
+        print("Writing successful - topics file: ",len(topicsList))
     
     else:
         print("No topics from this json")
