@@ -10,8 +10,8 @@ Update 2: 14 Dec 2018, Excluding the writing of new json files
 """
 import json
 
-inputFile = "H://DataSet//1.json" #Name of the json input file
-topicsFile = "H://DataSet//Outputs//1_Topics.txt" #Name of the text file-- for topics
+inputFile = "H://DataSet//parts//956.json" #Name of the json input file
+topicsFile = "H://DataSet//Outputs//956_Topics.txt" #Name of the text file-- for topics
 topicsList = []
 lines = []
 
