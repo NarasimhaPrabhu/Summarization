@@ -3,43 +3,28 @@
 Created on Fri Dec 28 16:51:35 2018
 
 @author: Sruthi Pasumarthy
+@Update 1: Reading csv with pandas, changed the checking condition
+
 """
 import json
+import pandas as pd
 from os import listdir
 
 dirPath = "H://DataSet//json//"
 
-csFile = "H://DataSet//Topics//CS.txt"
-enggFile = "H://DataSet//Topics//Engg.txt"
-econFile = "H://DataSet//Topics//Econ.txt"
-lawFile = "H://DataSet//Topics//Law.txt"
-mathFile = "H://DataSet//Topics//Math.txt"
-socialFile = "H://DataSet//Topics//Social.txt"
+csFile = "H://DataSet//Topics//CS.csv"
+enggFile = "H://DataSet//Topics//Engg.csv"
+econFile = "H://DataSet//Topics//Econ.csv"
+lawFile = "H://DataSet//Topics//Law.csv"
+mathFile = "H://DataSet//Topics//Math.csv"
+socialFile = "H://DataSet//Topics//Social.csv"
 
-cs = []
-engg = []
-econ = []
-law = []
-math = []
-social = []
-
-with open(csFile, "r", encoding="utf-8") as f:
-    cs = f.readlines()
-
-with open(enggFile, "r", encoding="utf-8") as f:
-    engg = f.readlines()
-
-with open(econFile, "r", encoding="utf-8") as f:
-    econ = f.readlines()
-
-with open(lawFile, "r", encoding="utf-8") as f:
-    law = f.readlines()
-
-with open(mathFile, "r", encoding="utf-8") as f:
-    math = f.readlines()
-
-with open(socialFile, "r", encoding="utf-8") as f:
-    social = f.readlines()
+cs = pd.read_csv(csFile, header = None)
+engg = pd.read_csv(enggFile, header = None)
+econ = pd.read_csv(econFile, header = None)
+law = pd.read_csv(lawFile, header = None)
+math = pd.read_csv(mathFile, header = None)
+social = pd.read_csv(socialFile, header = None)
 
 csJSON = "H://DataSet//newJSON//CS.json"
 enggJSON = "H://DataSet//newJSON//Engg.json"
@@ -65,32 +50,30 @@ for file in inputDirFiles:
             temp = json.loads(line)
             if temp["fullText"]:
                 for it in temp["topics"]:
-                    if cs.__contains__(it):
-                        print(it)
+                    
+                    if (cs[0] == it).any():
+                        #print(it)
                         with open(csJSON, "a+", encoding="utf-8") as fout:
-                            fout.write(line + "\n")
-                    if engg.__contains__(it):
-                        print(it)
+                            fout.write(line)
+                    if (engg[0] == it).any():
+                        #print(it)
                         with open(enggJSON, "a+", encoding="utf-8") as fout:
-                            fout.write(line + "\n")
-                    if econ.__contains__(it):
-                        print(it)
+                            fout.write(line)
+                    if (econ[0] == it).any():
+                        #print(it)
                         with open(econJSON, "a+", encoding="utf-8") as fout:
-                            fout.write(line + "\n")
-                    if law.__contains__(it):
-                        print(it)
+                            fout.write(line)
+                    if (law[0] == it).any():
+                        #print(it)
                         with open(lawJSON, "a+", encoding="utf-8") as fout:
-                            fout.write(line + "\n")
-                    if math.__contains__(it):
-                        print(it)
+                            fout.write(line)
+                    if (math[0] == it).any():
+                        #print(it)
                         with open(mathJSON, "a+", encoding="utf-8") as fout:
-                            fout.write(line + "\n")
-                    if social.__contains__(it):
-                        print(it)
+                            fout.write(line)
+                    if (social[0] == it).any():
+                        #print(it)
                         with open(socialJSON, "a+", encoding="utf-8") as fout:
-                            fout.write(line + "\n")
+                            fout.write(line)
     
     print(file + " Completed parsing")
-
-        
-
